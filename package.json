@@ -15,8 +15,11 @@
   "dependencies": {
     "axios": "^0.16.2",
     "immutable": "^3.8.1",
+    "material-components-web": "^0.12.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-mdc-web": "^0.12.2",
+    "react-proptypes": "^1.0.0",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0"
   },
@@ -25,5 +28,25 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ]
+    },
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true,
+      "node": true,
+      "jasmine": true
+    }
   }
 }

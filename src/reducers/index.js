@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import app from './appReducer';
+import forecast from './forecastReducer';
+import location from './locationReducer';
 
 export default combineReducers({
-  app,
+  forecast,
+  location,
 });
