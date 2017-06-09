@@ -7,6 +7,7 @@ import locationAction from '../actions/locationActions';
 import forecastAction from '../actions/forecastActions';
 
 import SearchInput from './searchInput';
+import CurrentForecast from './currentForecast';
 
 class App extends React.Component {
   state = {
@@ -66,6 +67,9 @@ class App extends React.Component {
           <SearchInput
             onSubmit={this.handleLocationNameChange}
             value={this.state.locationName}
+          />
+          <CurrentForecast
+            forecast={this.props.forecast.list[4] || null}
           />
         </Cell>
         <Cell
