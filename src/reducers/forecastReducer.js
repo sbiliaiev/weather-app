@@ -3,7 +3,11 @@ import { Map, fromJS } from 'immutable';
 import constant from '../constants/forecastConstants';
 
 const initialState = Map({
-  forecast: Map({}),
+  forecast: Map({
+    city: Map({
+      name: '',
+    }),
+  }),
   status: '',
 });
 

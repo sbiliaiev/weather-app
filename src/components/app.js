@@ -9,6 +9,10 @@ import forecastAction from '../actions/forecastActions';
 import SearchInput from './searchInput';
 
 class App extends React.Component {
+  state = {
+    locationName: '',
+  }
+
   componentDidMount() {
     this.props.getCurrentLocation();
   }
@@ -24,6 +28,25 @@ class App extends React.Component {
       };
       this.props.getForecast(param);
     }
+
+    if (this.state.locationName !== nextProps.forecast.city.name) {
+      this.setState((state) => {
+        const obj = { ...state };
+        obj.locationName = `${nextProps.forecast.city.name}, ${nextProps.forecast.city.country}`;
+        return obj;
+      });
+    }
+
+    console.log('NEW PROPS', nextProps);
+  }
+
+  handleLocationNameChange = (name) => {
+    this.props.getForecast(name);
+    this.setState((state) => {
+      const obj = { ...state };
+      obj.locationName = name;
+      return obj;
+    });
   }
 
   render() {
@@ -40,7 +63,10 @@ class App extends React.Component {
           tablet={6}
           phone={4}
         >
-          <SearchInput />
+          <SearchInput
+            onSubmit={this.handleLocationNameChange}
+            value={this.state.locationName}
+          />
         </Cell>
         <Cell
           col={4}
