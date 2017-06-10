@@ -1,0 +1,51 @@
+.forecast-current {
+  /*display: flex;*/
+  padding: 10px 10px;
+  border-bottom: 2px solid #c2c2c2;
+}
+
+.forecast-current__top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid #c2c2c2;
+  padding-bottom: 15px;
+}
+
+.forecast-current__icon {
+  font-size: 7em;
+}
+
+.forecast-current__temp {
+  font-size: 5em;
+  text-align: center;
+}
+
+.forecast-current__temp_description {
+  font-size: 30px;
+}
+
+.forecast-current__bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.forecast-current__wind_deg {
+  font-size: 16px;
+  text-align: center;
+}
+
+.forecast-current__wind_deg i {
+  font-size: 3em;
+}
+
+.forecast-current__wind_speed {
+  font-size: 16px;
+  text-align: center;
+}
+
+.forecast-current__wind_speed i {
+  font-size: 3em;
+}

@@ -57,6 +57,7 @@ class App extends React.Component {
     data.map((item, index) => {
       if (index === 5 || index === 12 || index === 20 || index === 28 || index === 36) {
         const obj = {
+          id: item.weather[0].id,
           icon: item.weather[0].icon,
           description: item.weather[0].description,
           temp: item.main.temp,
@@ -76,12 +77,12 @@ class App extends React.Component {
       <Grid>
 
         <Cell
-          col={4}
+          col={3}
           tablet={1}
           phone={0}
         />
         <Cell
-          col={4}
+          col={6}
           tablet={6}
           phone={4}
         >
@@ -98,7 +99,7 @@ class App extends React.Component {
           
         </Cell>
         <Cell
-          col={4}
+          col={3}
           tablet={1}
           phone={0}
         />
