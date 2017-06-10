@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import LoadingHOC from '../../hoc/loadingHOC';
+
 const CurrentForecast = props => (
   <div>
-    icon {props.forecast && props.forecast.weather && props.forecast.weather[0].icon}
+    icon {props.forecast.icon}
     <br />
-    temp {props.forecast && props.forecast.main && props.forecast.main.temp}
+    temp {props.forecast.temp}
     <br />
-    wind direaction {props.forecast && props.forecast.wind && props.forecast.wind.deg}
+    wind direction {props.forecast.wind_direction}
     <br />
-    wind power {props.forecast && props.forecast.wind && props.forecast.wind.speed}
+    wind power {props.forecast.wind_power}
   </div>
 );
 
-export default CurrentForecast;
+export default LoadingHOC('forecast')(CurrentForecast);

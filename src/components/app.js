@@ -8,10 +8,12 @@ import forecastAction from '../actions/forecastActions';
 
 import SearchInput from './searchInput';
 import CurrentForecast from './currentForecast';
+import ForecastList from './forecastList';
 
 class App extends React.Component {
   state = {
     locationName: '',
+    forecast: [],
   }
 
   componentDidMount() {
@@ -33,12 +35,13 @@ class App extends React.Component {
     if (this.state.locationName !== nextProps.forecast.city.name) {
       this.setState((state) => {
         const obj = { ...state };
+        console.log(nextProps);
         obj.locationName = `${nextProps.forecast.city.name}, ${nextProps.forecast.city.country}`;
+        obj.forecast = this.filterForecastData(nextProps.forecast.list);
+        obj.forecast = obj.forecast.filter(item => item !== undefined);
         return obj;
       });
     }
-
-    console.log('NEW PROPS', nextProps);
   }
 
   handleLocationNameChange = (name) => {
@@ -49,6 +52,24 @@ class App extends React.Component {
       return obj;
     });
   }
+
+  filterForecastData = data => (
+    data.map((item, index) => {
+      if (index === 5 || index === 12 || index === 20 || index === 28 || index === 36) {
+        const obj = {
+          icon: item.weather[0].icon,
+          description: item.weather[0].description,
+          temp: item.main.temp,
+          temp_min: item.main.temp_min,
+          temp_max: item.main.temp_max,
+          wind_speed: item.wind.speed,
+          wind_deg: item.wind.deg,
+          date: item.dt_txt,
+        };
+        return obj;
+      }
+    })
+  )
 
   render() {
     return (
@@ -69,8 +90,12 @@ class App extends React.Component {
             value={this.state.locationName}
           />
           <CurrentForecast
-            forecast={this.props.forecast.list[4] || null}
+            forecast={this.state.forecast[0]}
           />
+          <ForecastList
+            forecast={this.state.forecast.splice(1, 4)}
+          />
+          
         </Cell>
         <Cell
           col={4}
