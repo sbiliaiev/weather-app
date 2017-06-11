@@ -10,7 +10,7 @@ import './assets/css/weather-icons-wind.min.css';
 
 import store from './store';
 
-import App from './components/app';
+import App from './containers/app';
 
 ReactDOM.render(
   <Provider store={store}>

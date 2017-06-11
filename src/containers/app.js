@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'react-proptypes';
+import PropTypes from 'prop-types';
 import { Grid, Cell } from 'react-mdc-web/lib';
 
 import locationAction from '../actions/locationActions';
 import forecastAction from '../actions/forecastActions';
 
-import SearchInput from './searchInput';
-import CurrentForecast from './currentForecast';
-import ForecastList from './forecastList';
+import SearchInput from '../components/searchInput';
+import CurrentForecast from '../components/currentForecast';
+import ForecastList from '../components/forecastList';
 
 class App extends React.Component {
   state = {
@@ -35,7 +35,6 @@ class App extends React.Component {
     if (this.state.locationName !== nextProps.forecast.city.name) {
       this.setState((state) => {
         const obj = { ...state };
-        console.log(nextProps);
         obj.locationName = `${nextProps.forecast.city.name}, ${nextProps.forecast.city.country}`;
         obj.forecast = this.filterForecastData(nextProps.forecast.list);
         obj.forecast = obj.forecast.filter(item => item !== undefined);
@@ -69,6 +68,7 @@ class App extends React.Component {
         };
         return obj;
       }
+      return undefined;
     })
   )
 
@@ -96,7 +96,7 @@ class App extends React.Component {
           <ForecastList
             forecast={this.state.forecast.splice(1, 4)}
           />
-          
+
         </Cell>
         <Cell
           col={3}
@@ -115,7 +115,7 @@ App.propTypes = {
   locationStatus: PropTypes.string.isRequired,
   getCurrentLocation: PropTypes.func.isRequired,
 
-  forecast: PropTypes.object.isRequired,
+  forecast: PropTypes.object.isRequired,  // eslint-disable-line react/forbid-prop-types
   forecastStatus: PropTypes.string.isRequired,
   getForecast: PropTypes.func.isRequired,
 };

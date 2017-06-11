@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './forecastList.css';
 
@@ -32,5 +33,21 @@ const ForecastList = props => (
     }
   </div>
 );
+
+ForecastList.propTypes = {
+  forecast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      icon: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      temp: PropTypes.number.isRequired,
+      temp_min: PropTypes.number.isRequired,
+      temp_max: PropTypes.number.isRequired,
+      wind_speed: PropTypes.number.isRequired,
+      wind_deg: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
 
 export default ForecastList;

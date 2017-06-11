@@ -33,4 +33,18 @@ const CurrentForecast = props => (
   </div>
 );
 
+CurrentForecast.propTypes = {
+  forecast: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    icon: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    temp: PropTypes.number.isRequired,
+    temp_min: PropTypes.number.isRequired,
+    temp_max: PropTypes.number.isRequired,
+    wind_speed: PropTypes.number.isRequired,
+    wind_deg: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 export default LoadingHOC('forecast')(CurrentForecast);
