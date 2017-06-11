@@ -15,7 +15,7 @@ describe('forecast actions', () => {
     };
     expect(action.getForecast(param)).toEqual(expectedAction);
   });
-  
+
   it('should create and action of getting forecast from lat/lon object', () => {
     const param = {
       latitude: 12345678,
