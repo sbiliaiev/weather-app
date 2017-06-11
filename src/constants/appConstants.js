@@ -1,7 +1,0 @@
-// const SET_USER_LOGGED_IN = 'SET_USER_LOGGED_IN';
-// const SER_USER_LOGGED_OUT = 'SER_USER_LOGGED_OUT';
-
-// export default {
-//   SET_USER_LOGGED_IN,
-//   SER_USER_LOGGED_OUT,
-// };
